@@ -14,4 +14,8 @@ export class TodoDataService {
     this.todos.push(todo);
     return this;
   }
+  deleteTodo(id: number): TodoDataService {
+    this.todos = this.todos.filter(todo => todo.id !== id);
+    return this;
+  }
 }
