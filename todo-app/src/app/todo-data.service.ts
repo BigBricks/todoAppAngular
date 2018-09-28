@@ -32,4 +32,10 @@ export class TodoDataService {
   getAllTodo(): Todo[] {
     return this.todos;
   }
+  toggleComplete(todo: Todo) {
+    let update = this.updateTodo(todo.id, {
+      complete: !todo.complete
+    });
+    return update;
+  }
 }
