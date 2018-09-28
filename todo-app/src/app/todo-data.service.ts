@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
-
+import { Injectable } from "@angular/core";
+import { Todo } from "./todo";
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class TodoDataService {
-
-  constructor() { }
+  finalId: number = 0;
+  todos: Todo[] = [];
+  constructor() {}
 }
