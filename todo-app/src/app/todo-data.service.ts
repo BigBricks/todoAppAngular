@@ -29,4 +29,7 @@ export class TodoDataService {
   getTodo(id: number): Todo {
     return this.todos.filter(todo => todo.id === id).pop();
   }
+  getAllTodo(): Todo[] {
+    return this.todos;
+  }
 }
