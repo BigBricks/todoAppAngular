@@ -95,4 +95,17 @@ describe("TodoDataService", () => {
       }
     ));
   });
+  describe("#toggleComplete(todo)", () => {
+    it("should return updated todo with !boolean complete status", inject(
+      [TodoDataService],
+      (service: TodoDataService) => {
+        let todo1 = new Todo({ title: "1", complete: false });
+        service.addTodo(todo1);
+        let update = service.toggleComplete(todo1);
+        expect(update.complete).toEqual(true);
+        service.toggleComplete(todo1);
+        expect(update.complete).toEqual(false);
+      }
+    ));
+  });
 });
