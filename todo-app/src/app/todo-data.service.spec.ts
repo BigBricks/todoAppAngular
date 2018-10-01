@@ -83,5 +83,16 @@ describe("TodoDataService", () => {
         expect(update.title).toEqual("bob ross");
       }
     ));
+    it("should return null if not found", inject(
+      [TodoDataService],
+      (service: TodoDataService) => {
+        let todo1 = new Todo({ title: "1", complete: false });
+        service.addTodo(todo1);
+        let update = service.updateTodo(2, {
+          title: "bob ross"
+        });
+        expect(update).toEqual(null);
+      }
+    ));
   });
 });
