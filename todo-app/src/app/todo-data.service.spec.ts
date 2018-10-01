@@ -30,4 +30,17 @@ describe("TodoDataService", () => {
       }
     ));
   });
+  describe("#save(todo)", () => {
+    it("should automatically increment id", inject(
+      [TodoDataService],
+      (service: TodoDataService) => {
+        let todo1 = new Todo({ title: "1", complete: false });
+        let todo2 = new Todo({ title: "2", complete: true });
+        service.addTodo(todo1);
+        service.addTodo(todo2);
+        expect(service.getTodo(1)).toEqual(todo1);
+        expect(service.getTodo(2)).toEqual(todo2);
+      }
+    ));
+  });
 });
