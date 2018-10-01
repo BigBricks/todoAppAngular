@@ -43,4 +43,20 @@ describe("TodoDataService", () => {
       }
     ));
   });
+  describe("#deleteTodo(id)", () => {
+    it("should remove a todo by id", inject(
+      [TodoDataService],
+      (service: TodoDataService) => {
+        let todo1 = new Todo({ title: "1", complete: false });
+        let todo2 = new Todo({ title: "2", complete: true });
+        service.addTodo(todo1);
+        service.addTodo(todo2);
+        expect(service.getAllTodo()).toEqual([todo1, todo2]);
+        service.deleteTodo(1);
+        expect(service.getAllTodo()).toEqual([todo2]);
+        service.deleteTodo(2);
+        expect(service.getAllTodo()).toEqual([]);
+      }
+    ));
+  });
 });
