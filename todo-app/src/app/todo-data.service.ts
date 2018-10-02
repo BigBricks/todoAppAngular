@@ -37,16 +37,26 @@ export class TodoDataService {
   updateTodo(todo: Todo): Observable<Todo> {
     return this.api.updateTodo(todo);
   }
-  getTodo(id: number): Todo {
-    return this.todos.filter(todo => todo.id === id).pop();
+  // getTodo(id: number): Todo {
+  //   return this.todos.filter(todo => todo.id === id).pop();
+  // }
+  getTodo(TodoId: number): Observable<Todo> {
+    return this.api.getTodo(TodoId);
   }
-  getAllTodo(): Todo[] {
-    return this.todos;
+  // getAllTodo(): Todo[] {
+  //   return this.todos;
+  // }
+  getAllTodo(): Observable<Todo[]> {
+    return this.api.getAllTodo();
   }
+  // toggleComplete(todo: Todo) {
+  //   let update = this.updateTodo(todo.id, {
+  //     complete: !todo.complete
+  //   });
+  //   return update;
+  // }
   toggleComplete(todo: Todo) {
-    let update = this.updateTodo(todo.id, {
-      complete: !todo.complete
-    });
-    return update;
+    todo.complete = !todo.complete;
+    return this.api.updateTodo(todo);
   }
 }
