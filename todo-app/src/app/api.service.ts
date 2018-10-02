@@ -14,11 +14,18 @@ export class APIService {
     console.error("ApiService::handleError", error);
     return Observable.throw(error);
   }
-  public addTodo(todo: Todo) {}
+  public addTodo(todo: Todo): Observable<Todo> {
+    return this.http.post(API_URL + "/api/todo", todo).pipe(
+      map(response => {
+        return new Todo(response.json());
+      }),
+      catchError(this.handleError)
+    );
+  }
   public deleteTodo(todoId: number) {}
   public updateTodo(todo: Todo) {}
   public getTodo(todoId: number): Observable<Todo> {
-    return this.http.get(API_URL + "/api/todo").pipe(
+    return this.http.get(API_URL + "/api/todo" + todoId).pipe(
       map(response => {
         return new Todo(response.json());
       }),
