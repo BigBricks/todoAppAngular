@@ -26,13 +26,16 @@ export class TodoDataService {
   deleteTodo(todoId: number): Observable<Todo> {
     return this.api.deleteTodo(todoId);
   }
-  updateTodo(id: number, values: Object = {}): Todo {
-    let bob = this.getTodo(id);
-    if (!bob) {
-      return null;
-    }
-    Object.assign(bob, values);
-    return bob;
+  // updateTodo(id: number, values: Object = {}): Todo {
+  //   let bob = this.getTodo(id);
+  //   if (!bob) {
+  //     return null;
+  //   }
+  //   Object.assign(bob, values);
+  //   return bob;
+  // }
+  updateTodo(todo: Todo): Observable<Todo> {
+    return this.api.updateTodo(todo);
   }
   getTodo(id: number): Todo {
     return this.todos.filter(todo => todo.id === id).pop();
