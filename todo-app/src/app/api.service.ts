@@ -54,5 +54,4 @@ export class APIService {
       catchError(this.handleError)
     );
   }
-  public toggleComplete() {}
 }

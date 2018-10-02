@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Todo } from "./todo";
-import { ApiService } from "./api.service";
+import { APIService } from "./api.service";
 import { Observable } from "rxjs";
 @Injectable({
   providedIn: "root"
@@ -8,7 +8,7 @@ import { Observable } from "rxjs";
 export class TodoDataService {
   finalId: number = 0;
   todos: Todo[] = [];
-  constructor(private api: ApiService) {}
+  constructor(private api: APIService) {}
   addTodo(todo: Todo): TodoDataService {
     if (!todo.id) {
       todo.id = ++this.finalId;
