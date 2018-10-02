@@ -9,16 +9,22 @@ export class TodoDataService {
   finalId: number = 0;
   todos: Todo[] = [];
   constructor(private api: APIService) {}
-  addTodo(todo: Todo): TodoDataService {
-    if (!todo.id) {
-      todo.id = ++this.finalId;
-    }
-    this.todos.push(todo);
-    return this;
+  // addTodo(todo: Todo): TodoDataService {
+  //   if (!todo.id) {
+  //     todo.id = ++this.finalId;
+  //   }
+  //   this.todos.push(todo);
+  //   return this;
+  // }
+  addTodo(todo: Todo) {
+    return this.api.addTodo(todo);
   }
-  deleteTodo(id: number): TodoDataService {
-    this.todos = this.todos.filter(todo => todo.id !== id);
-    return this;
+  // deleteTodo(id: number): TodoDataService {
+  //   this.todos = this.todos.filter(todo => todo.id !== id);
+  //   return this;
+  // }
+  deleteTodo(todoId: number): Observable<Todo> {
+    return this.api.deleteTodo(todoId);
   }
   updateTodo(id: number, values: Object = {}): Todo {
     let bob = this.getTodo(id);
