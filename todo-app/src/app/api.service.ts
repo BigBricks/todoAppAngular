@@ -23,7 +23,12 @@ export class APIService {
       catchError(this.handleError)
     );
   }
-  public deleteTodo(todoId: number) {}
+  public deleteTodo(todoId: number): Observable<null> {
+    return this.http.delete(API_URL + "/api/todo" + todoId).pipe(
+      map(response => null),
+      catchError(this.handleError)
+    );
+  }
   public updateTodo(todo: Todo): Observable<Todo> {
     return this.http.put(API_URL + "/api/todo" + todo.id, todo).pipe(
       map(response => {
