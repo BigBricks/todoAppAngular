@@ -17,7 +17,14 @@ export class APIService {
   public addTodo(todo: Todo) {}
   public deleteTodo(todoId: number) {}
   public updateTodo(todo: Todo) {}
-  public getTodo(todoId: number) {}
+  public getTodo(todoId: number): Observable<Todo> {
+    return this.http.get(API_URL + "/api/todo").pipe(
+      map(response => {
+        return new Todo(response.json());
+      }),
+      catchError(this.handleError)
+    );
+  }
   public getAllTodo(): Observable<Todo[]> {
     return this.http.get(API_URL + "/api/todo").pipe(
       map(response => {
