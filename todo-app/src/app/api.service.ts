@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { environment } from "../environments/environment";
 import { Http, Response } from "@angular/http";
 import { Todo } from "./todo";
-import { Observable } from "rxjs";
+import { Observable, throwError } from "rxjs";
 import { map, catchError } from "rxjs/operators";
 import { __core_private_testing_placeholder__ } from "@angular/core/testing";
 const API_URL = environment.apiUrl;
@@ -13,7 +13,7 @@ export class APIService {
   constructor(private http: Http) {}
   private handleError(error: Response | any) {
     console.error("ApiService::handleError", error);
-    return Observable.throw(error);
+    return throwError(error);
   }
   public addTodo(todo: Todo): Observable<Todo> {
     return this.http.post(API_URL + "/api/todo", todo).pipe(
