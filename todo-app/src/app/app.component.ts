@@ -19,7 +19,9 @@ export class AppComponent implements OnInit {
     });
   }
   toggleComplete(todo) {
-    this.todoDataService.toggleComplete(todo);
+    this.todoDataService.toggleComplete(todo).subscribe(updatedTodo => {
+      todo = updatedTodo;
+    });
   }
   addTodo(todo) {
     this.todoDataService.addTodo(todo).subscribe(newTodo => {
