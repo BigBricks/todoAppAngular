@@ -29,7 +29,7 @@ function post(req, res) {
       res.status(201).json(expected);
     })
     .catch(err => {
-      res.status(500).json({ message: "There was an error in POST" });
+      res.status(500).json({ message: err.message });
     });
 }
 function getid(req, res) {

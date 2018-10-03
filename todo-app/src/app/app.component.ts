@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
     });
   }
   addTodo(todo) {
+    console.log(todo);
     this.todoDataService.addTodo(todo).subscribe(newTodo => {
       this.todos = this.todos.concat(newTodo);
     });

@@ -1,8 +1,13 @@
-<!--The content below is only a placeholder and can be replaced.-->
+<!-- <!-- The content below is only a placeholder and can be replaced. -->
 <section class="todoApp">
   <header class="header">
     <h1>Todos</h1>
-    <input class="new-todo" placeholder="What needs to be done?" autofocus="" [(ngModel)]="newTodo.title" (keyup.enter)="addTodo()">
+    <form (ngSubmit)="addTodo(newTodo.title)">
+      <input #newTodo="ngModel" placeholder="What needs to be done?" autofocus="" name="newTodo" [(ngModel)]="newTodo.title">
+
+
+      <button class="inputTextAdd" type="button" (click)=addTodo(newTodo.title)>Add Item</button>
+    </form>
   </header>
   <section class="mainContent">
     <ul class="todoList">
