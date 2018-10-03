@@ -32,7 +32,9 @@ export class AppComponent implements OnInit {
   }
 
   removeTodo(todo) {
-    this.todoDataService.deleteTodo(todo.id);
+    this.todoDataService.deleteTodo(todo.id).subscribe(() => {
+      this.todos = this.todos.filter(t => t.id !== todo.id);
+    });
   }
 
   // get todoss() {
