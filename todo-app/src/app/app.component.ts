@@ -15,9 +15,10 @@ export class AppComponent {
   toggleComplete(todo) {
     this.todoDataService.toggleComplete(todo);
   }
-  addTodo() {
-    this.todoDataService.addTodo(this.newTodo);
-    this.newTodo = new Todo();
+  addTodo(todo) {
+    this.todoDataService.addTodo(todo);
+    // this.todoDataService.addTodo(this.newTodo);
+    // this.newTodo = new Todo();
   }
 
   removeTodo(todo) {
