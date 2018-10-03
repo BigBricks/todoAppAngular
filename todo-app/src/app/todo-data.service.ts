@@ -40,8 +40,8 @@ export class TodoDataService {
   // getTodo(id: number): Todo {
   //   return this.todos.filter(todo => todo.id === id).pop();
   // }
-  getTodo(TodoId: number): Observable<Todo> {
-    return this.api.getTodo(TodoId);
+  getTodo(todoId: number): Observable<Todo> {
+    return this.api.getTodo(todoId);
   }
   // getAllTodo(): Todo[] {
   //   return this.todos;
