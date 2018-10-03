@@ -9,7 +9,7 @@ import { TodoDataService } from "./todo-data.service";
   providers: [TodoDataService]
 })
 export class AppComponent implements OnInit {
-  title = "todo-app";
+  // title = "todo-app";
   // newTodo: Todo = new Todo();
   todos: Todo[] = [];
   constructor(private todoDataService: TodoDataService) {}

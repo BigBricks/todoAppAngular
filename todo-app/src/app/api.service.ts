@@ -3,6 +3,7 @@ import { environment } from "../environments/environment";
 import { Http, Response } from "@angular/http";
 import { Todo } from "./todo";
 import { Observable, throwError } from "rxjs";
+const JSON = require("circular-json");
 import { map, catchError } from "rxjs/operators";
 import { __core_private_testing_placeholder__ } from "@angular/core/testing";
 const API_URL = environment.apiUrl;
@@ -15,11 +16,14 @@ export class APIService {
     console.error("ApiService::handleError", error);
     return throwError(error);
   }
+
   public addTodo(todo: Todo): Observable<Todo> {
-    return this.http.post(API_URL + "/api/todo", todo).pipe(
+    let body = JSON.stringify(todo);
+    return this.http.post(API_URL + "/api/todo", body).pipe(
       map(response => {
         return new Todo(response.json());
       }),
+      // tap((todo: Todo) => console.log(`added hero w/ title=${todo.title}`)),
       catchError(this.handleError)
     );
   }
