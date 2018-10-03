@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Todo } from "./todo";
 import { TodoDataService } from "./todo-data.service";
 
@@ -8,10 +8,16 @@ import { TodoDataService } from "./todo-data.service";
   styleUrls: ["./app.component.css"],
   providers: [TodoDataService]
 })
-export class AppComponent {
-  title = "todo-app";
-  newTodo: Todo = new Todo();
+export class AppComponent implements OnInit {
+  // title = "todo-app";
+  // newTodo: Todo = new Todo();
+  todos: Todo[] = [];
   constructor(private todoDataService: TodoDataService) {}
+  public ngOnInit() {
+    this.todoDataService.getAllTodo().subscribe(todos => {
+      this.todos = todos;
+    });
+  }
   toggleComplete(todo) {
     this.todoDataService.toggleComplete(todo);
   }
@@ -25,7 +31,7 @@ export class AppComponent {
     this.todoDataService.deleteTodo(todo.id);
   }
 
-  get todos() {
+  get todoss() {
     return this.todoDataService.getAllTodo();
   }
 }
