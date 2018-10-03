@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
     this.todoDataService.deleteTodo(todo.id);
   }
 
-  get todoss() {
-    return this.todoDataService.getAllTodo();
-  }
+  // get todoss() {
+  //   return this.todoDataService.getAllTodo();
+  // }
 }
