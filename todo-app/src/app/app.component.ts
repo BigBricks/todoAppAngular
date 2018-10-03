@@ -22,7 +22,9 @@ export class AppComponent implements OnInit {
     this.todoDataService.toggleComplete(todo);
   }
   addTodo(todo) {
-    this.todoDataService.addTodo(todo);
+    this.todoDataService.addTodo(todo).subscribe(newTodo => {
+      this.todos = this.todos.concat(newTodo);
+    });
     // this.todoDataService.addTodo(this.newTodo);
     // this.newTodo = new Todo();
   }
