@@ -2,12 +2,13 @@
 <section class="todoApp">
   <header class="header">
     <h1>Todos</h1>
-    <form (ngSubmit)="addTodo(newTodo)">
-      <input #newTodo="ngModel" placeholder="What needs to be done?" autofocus="" name="newTodo" [(ngModel)]="newTodo.title">
+    <!-- <form [formGroup]="form" (ngSubmit)="addTodo()"> -->
+    <input #newTodo="ngModel" placeholder="What needs to be done?" autofocus="" name="newTodo" [(ngModel)]="newTodo.title"
+      (keyup.enter)="addTodo(newTodo.title)">
+    <!-- <input type="text" formControlName="title"> -->
 
-
-      <button class="inputTextAdd" type="button" (click)=addTodo(newTodo.title)>Add Item</button>
-    </form>
+    <!-- <button class="inputTextAdd" type="button" (click)=addTodo(newTodo.title)>Add Item</button> -->
+    <!-- </form> -->
   </header>
   <section class="mainContent">
     <ul class="todoList">

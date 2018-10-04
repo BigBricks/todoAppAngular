@@ -2,11 +2,15 @@ import { Injectable } from "@angular/core";
 import { environment } from "../environments/environment";
 import { Http, Response } from "@angular/http";
 import { Todo } from "./todo";
+import { HttpHeaders } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
-const JSON = require("circular-json");
 import { map, catchError } from "rxjs/operators";
 import { __core_private_testing_placeholder__ } from "@angular/core/testing";
 const API_URL = environment.apiUrl;
+const JSON = require("circular-json");
+const httpOptions = {
+  headers: new HttpHeaders({ "Content-Type": "application/json" })
+};
 @Injectable({
   providedIn: "root"
 })
@@ -18,8 +22,8 @@ export class APIService {
   }
 
   public addTodo(todo: Todo): Observable<Todo> {
-    let body = JSON.stringify(todo);
-    return this.http.post(API_URL + "/api/todo", body).pipe(
+    // let body = JSON.stringify(todo);
+    return this.http.post(API_URL + "/api/todo", { title: todo }).pipe(
       map(response => {
         return new Todo(response.json());
       }),
