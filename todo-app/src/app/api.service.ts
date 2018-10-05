@@ -7,10 +7,6 @@ import { Observable, throwError } from "rxjs";
 import { map, catchError } from "rxjs/operators";
 import { __core_private_testing_placeholder__ } from "@angular/core/testing";
 const API_URL = environment.apiUrl;
-const JSON = require("circular-json");
-const httpOptions = {
-  headers: new HttpHeaders({ "Content-Type": "application/json" })
-};
 @Injectable({
   providedIn: "root"
 })
@@ -32,18 +28,22 @@ export class APIService {
     );
   }
   public deleteTodo(todoId: number): Observable<null> {
-    return this.http.delete(API_URL + "/api/todo" + todoId).pipe(
+    return this.http.delete(API_URL + "/api/todo/" + todoId).pipe(
       map(response => null),
       catchError(this.handleError)
     );
   }
   public updateTodo(todo: Todo): Observable<Todo> {
-    return this.http.put(API_URL + "/api/todo" + todo.id, todo).pipe(
-      map(response => {
-        return new Todo(response.json());
-      }),
-      catchError(this.handleError)
-    );
+    return this.http
+      .put(API_URL + "/api/todo/" + todo._id, {
+        todo
+      })
+      .pipe(
+        map(response => {
+          return new Todo(response.json());
+        }),
+        catchError(this.handleError)
+      );
   }
   public getTodo(todoId: number): Observable<Todo> {
     return this.http.get(API_URL + "/api/todo" + todoId).pipe(

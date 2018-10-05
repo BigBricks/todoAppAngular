@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
     });
   }
   toggleComplete(todo) {
+    console.log(todo);
     this.todoDataService.toggleComplete(todo).subscribe(updatedTodo => {
       todo = updatedTodo;
     });
@@ -34,8 +35,9 @@ export class AppComponent implements OnInit {
   }
 
   removeTodo(todo) {
-    this.todoDataService.deleteTodo(todo.id).subscribe(() => {
-      this.todos = this.todos.filter(t => t.id !== todo.id);
+    console.log(todo);
+    this.todoDataService.deleteTodo(todo).subscribe(() => {
+      this.todos = this.todos.filter(t => t !== todo);
     });
   }
 

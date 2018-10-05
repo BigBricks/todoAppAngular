@@ -21,6 +21,7 @@ mongoose
 
 server.use(cors());
 server.use(helmet());
+server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
 
 server.use("/api/todo", TodoRouter);
