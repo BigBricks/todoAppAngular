@@ -16,7 +16,7 @@
         <div class="view">
           <input class="toggle" type="checkbox" (click)="toggleComplete(todo)" [checked]="todo.complete">
           <label>{{todo.title}}</label>
-          <button class="destroy" (click)="removeTodo(todo._id)"></button>
+          <a href="http://localhost:4200/"><button type="submit" class="destroy" (click)="removeTodo(todo._id)">Hi</button></a>
         </div>
       </li>
     </ul>

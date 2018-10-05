@@ -44,7 +44,7 @@ function getid(req, res) {
 }
 function put(req, res) {
   const id = req.params.id;
-  const { Todo } = req.body;
+  const { title, complete } = req.body;
   if (!Todo.findById(id)) {
     res.status(404).json({ message: "Todo not found" });
   }

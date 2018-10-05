@@ -36,7 +36,8 @@ export class APIService {
   public updateTodo(todo: Todo): Observable<Todo> {
     return this.http
       .put(API_URL + "/api/todo/" + todo._id, {
-        todo
+        title: todo.title,
+        complete: todo.complete
       })
       .pipe(
         map(response => {

@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
   removeTodo(todo) {
     console.log(todo);
     this.todoDataService.deleteTodo(todo).subscribe(() => {
-      this.todos = this.todos.filter(t => t !== todo);
+      this.todos = this.todos.filter(t => t.title !== todo.title);
     });
   }
 
