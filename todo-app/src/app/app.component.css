@@ -1,0 +1,20 @@
+.redirectLabel {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.todoList li {
+  text-align: left;
+  padding-bottom: 10px;
+}
+.titleH1 {
+  text-align: center;
+}
+.titleInput {
+  text-align: center;
+}
+.todoApp {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}

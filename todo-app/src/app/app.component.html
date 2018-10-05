@@ -1,10 +1,10 @@
 <!-- <!-- The content below is only a placeholder and can be replaced. -->
 <section class="todoApp">
   <header class="header">
-    <h1>Todos</h1>
+    <h1 class="titleH1">Todos</h1>
     <!-- <form [formGroup]="form" (ngSubmit)="addTodo()"> -->
-    <input #newTodo="ngModel" placeholder="What needs to be done?" autofocus="" name="newTodo" [(ngModel)]="newTodo.title"
-      (keyup.enter)="addTodo(newTodo.title)">
+    <input #newTodo="ngModel" class="titleInput" placeholder="What needs to be done?" autofocus="" name="newTodo"
+      [(ngModel)]="newTodo.title" (keyup.enter)="addTodo(newTodo.title)">
     <!-- <input type="text" formControlName="title"> -->
 
     <!-- <button class="inputTextAdd" type="button" (click)=addTodo(newTodo.title)>Add Item</button> -->
@@ -15,8 +15,9 @@
       <li *ngFor="let todo of todos" [class.completed]="todo.complete">
         <div class="view">
           <input class="toggle" type="checkbox" (click)="toggleComplete(todo)" [checked]="todo.complete">
-          <label>{{todo.title}}</label>
-          <a href="http://localhost:4200/"><button type="submit" class="destroy" (click)="removeTodo(todo._id)">Hi</button></a>
+          <a class="redirectLabel" href="http://localhost:4200/"><button type="submit" class="destroy" (click)="removeTodo(todo._id)">Delete</button></a>
+          <label class="labelTitle">{{todo.title}}</label>
+
         </div>
       </li>
     </ul>
