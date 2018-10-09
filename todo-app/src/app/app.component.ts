@@ -43,6 +43,7 @@ export class AppComponent implements OnInit, OnChanges {
     console.log(todo);
     this.todoDataService.deleteTodo(todo).subscribe(() => {
       this.todos = this.todos.filter(t => t.title !== todo.title);
+      this.ngOnInit();
     });
   }
 
