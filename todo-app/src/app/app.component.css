@@ -12,6 +12,9 @@
 .titleInput {
   text-align: center;
 }
+.labelTitle {
+  padding-left: 10px;
+}
 .todoApp {
   display: flex;
   flex-direction: column;
