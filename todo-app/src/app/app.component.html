@@ -15,7 +15,7 @@
       <li *ngFor="let todo of todos" [class.completed]="todo.complete">
         <div class="view">
           <input class="toggle" type="checkbox" (click)="toggleComplete(todo)" [checked]="todo.complete">
-          <button type="submit" class="destroy" (click)="removeTodo(todo._id)">Delete</button>
+          <button type="submit" class="destroy" (click)="removeTodo(todo.id)">Delete</button>
           <label class="labelTitle">{{todo.title}}</label>
 
         </div>

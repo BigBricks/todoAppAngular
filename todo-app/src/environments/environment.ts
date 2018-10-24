@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://localhost:5000"
+  // apiUrl: "http://localhost:5000"
+  apiUrl: "https://todoapi20181024021244.azurewebsites.net"
 };
 
 /*
