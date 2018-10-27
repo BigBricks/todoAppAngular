@@ -12,11 +12,11 @@
   </header>
   <section class="mainContent">
     <ul class="todoList">
-      <li *ngFor="let todo of todos" [class.completed]="todo.complete">
+      <li *ngFor="let todo of todos.slice().reverse()" [class.completed]="todo.complete">
         <div class="view">
           <input class="toggle" type="checkbox" (click)="toggleComplete(todo)" [checked]="todo.complete">
           <button type="submit" class="destroy" (click)="removeTodo(todo.id)">Delete</button>
-          <label class="labelTitle">{{todo.title}}</label>
+          <label class="labelTitle">{{todo.title}} {{todo.id}}</label>
 
         </div>
       </li>
