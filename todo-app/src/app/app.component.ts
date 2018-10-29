@@ -33,7 +33,7 @@ export class AppComponent implements OnInit, OnChanges {
   addTodo(todo) {
     console.log(todo);
     this.todoDataService.addTodo(todo).subscribe(newTodo => {
-      this.todos.unshift(newTodo);
+      this.todos.push(newTodo);
     });
     // this.todoDataService.addTodo(this.newTodo);
     // this.newTodo = new Todo();
