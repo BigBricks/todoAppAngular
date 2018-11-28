@@ -2,27 +2,50 @@
 <section class="todoApp">
   <header class="header">
     <h1 class="titleH1">Todos</h1>
-    <!-- <form [formGroup]="form" (ngSubmit)="addTodo()"> -->
-    <input #newTodo="ngModel" class="titleInput" placeholder="What needs to be done?" autofocus="" name="newTodo"
-      [(ngModel)]="newTodo.title" (keyup.enter)="addTodo(newTodo.title)">
+    <!-- <form [formGroup]="form" (ngSubmit)="addTodo(newTodo.title)"> -->
+    <input
+      #newTodo="ngModel"
+      class="titleInput"
+      placeholder="What needs to be done?"
+      autofocus=""
+      name="newTodo"
+      [(ngModel)]="newTodo.title"
+      (keyup.enter)="addTodo(newTodo.title); newTodo.title = ''"
+    />
     <!-- <input type="text" formControlName="title"> -->
 
-    <!-- <button class="inputTextAdd" type="button" (click)=addTodo(newTodo.title)>Add Item</button> -->
+    <!--
+      <button
+        class="inputTextAdd"
+        type="button"
+        (click)="addTodo(newTodo.title)"
+      >
+        Add Item
+      </button>
+    -->
     <!-- </form> -->
   </header>
   <section class="mainContent">
     <ul class="todoList">
       <li *ngFor="let todo of todos" [class.completed]="todo.complete">
         <div class="view">
-          <input class="toggle" type="checkbox" (click)="toggleComplete(todo)" [checked]="todo.complete">
-          <button type="submit" class="destroy" (click)="removeTodo(todo.id)">Delete</button>
-          <label class="labelTitle">{{todo.title}}</label>
-
+          <input
+            class="toggle"
+            type="checkbox"
+            (click)="toggleComplete(todo)"
+            [checked]="todo.complete"
+          />
+          <button type="submit" class="destroy" (click)="removeTodo(todo.id)">
+            Delete
+          </button>
+          <label class="labelTitle">{{ todo.title }}</label>
         </div>
       </li>
     </ul>
   </section>
   <footer class="footer" *ngIf="todos.length > 0">
-    <span class="todo-counter">{{todos.length}} {{todos.length == 1 ? 'item' : 'items'}}</span>
+    <span class="todo-counter"
+      >{{ todos.length }} {{ todos.length == 1 ? "item" : "items" }}</span
+    >
   </footer>
 </section>
