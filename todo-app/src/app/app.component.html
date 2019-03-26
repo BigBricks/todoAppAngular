@@ -2,7 +2,6 @@
 <section class="todoApp">
   <header class="header">
     <h1 class="titleH1">Todos</h1>
-    <!-- <form [formGroup]="form" (ngSubmit)="addTodo(newTodo.title)"> -->
     <input
       #newTodo="ngModel"
       class="titleInput"
@@ -12,18 +11,6 @@
       [(ngModel)]="newTodo.title"
       (keyup.enter)="addTodo(newTodo.title); newTodo.title = ''"
     />
-    <!-- <input type="text" formControlName="title"> -->
-
-    <!--
-      <button
-        class="inputTextAdd"
-        type="button"
-        (click)="addTodo(newTodo.title)"
-      >
-        Add Item
-      </button>
-    -->
-    <!-- </form> -->
   </header>
   <section class="mainContent">
     <ul class="todoList">
